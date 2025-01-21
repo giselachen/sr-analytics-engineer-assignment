@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: dashboards
+    description: > 
+      Dashboards table contains information about dashboards in Datahub. Each row represents a unique dashboard in the system.
+      Dashboards have N:N relationships with users and glossary terms entities, amd N:1 relationship with the Domain Entity.
+      A Dashboard can be assigned to multiple users as owners. A dashboard is an external entity.
+    docs:
+      node_color: orange
+
+    columns:
+      # primary key
+      - name: dashboard_id
+        description: >
+          Unique identifier for a DataHub dashboard represented as urn in the entity model. 
+        tests:
+          - unique
+          - not_null
+
+      # timestamps
+      - name: dashboard_created_at
+        description: >
+          Timestamp indicating when the dashboard record was created in Datahub.
+
+      - name: dashboard_last_modified_at
+        description: >
+          Timestamp indicating when the dashboard record was last modified in the source 
+          system.    
+
+      # dashboard details
+      - name: entity_type
+        description: >
+          The type of entity represented in the Datahub entity model. The value is 'dashboard' for this model.
+      
+      - name: dashboard_detail_id
+        description: >
+          Unique identifier for the dashboard detail record originated from the source system, not Datahub.
+
+      - name: dashboard_tool
+        description: >
+          Name of the tool in which the dashboard was created.
+  
+      - name: dashboard_description    
+        description: >
+          Description of the dashboard.
+
+      - name: dashboard_title
+        description: >
+          Title of the dashboard.
+
+      - name: dashboard_url
+        description: >
+          URL to access the dashboard.
+
+      - name: dashboard_charts
+        description: >
+          JSON array of the charts used in the dashboard.
+
+      - name: dashboard_created_by
+        description: >
+          User or system process that created the dashboard record in Datahub.    
+
+      # dashboard relationship json
+      - name: dashboard_domains
+        description: >
+          JSON array of the domain assigned to the dashboard if available.
+
+      - name: dashboard_glossary_terms
+        description: >
+          JSON array of the glossary terms assigned to the dashboard if available.
+
+      - name: dashboard_owners
+        description: >
+          JSON array of the users assigned to the dashboard as owners.
+ 

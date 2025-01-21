@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: datasets
+    description: > 
+      Datasets table contains information about datasets in Datahub. Each row represents a unique dataset in the system.
+      Datasets have N:N relationships with users and glossary terms entities, amd N:1 relationship with the Domain Entity. 
+      A Dataset can be assigned to multiple users as owners. A dataset is an external entity.
+    docs:
+      node_color: orange
+
+    columns:
+      # primary key
+      - name: dataset_id
+        description: >
+          Unique identifier for a DataHub dataset represented as urn in the entity model. 
+        tests:
+          - unique
+          - not_null
+
+      # timestamps
+      - name: dataset_created_at
+        description: >
+          Timestamp indicating when the dataset was created in Datahub.
+
+      # dataset details
+      - name: entity_type
+        description: >
+          The type of entity represented in the Datahub entity model. The value is 'dataset' for this model. 
+
+      - name: dataset_name
+        description: >
+          Name of the dataset. 
+         
+      - name: dataset_platform
+        description: >
+          Platform name where the dataset is hosted. 
+
+      - name: dataset_origin
+        description: >
+          Origin of the dataset. Values can be prod or else.
+
+      - name: dataset_created_by
+        description: >
+          User or system process that created the dataset in Datahub.    
+  
+      # dataset relationship json
+      - name: dataset_domains
+        description: >
+          JSON array of the domain assigned to the dataset if available.
+
+      - name: dataset_glossary_terms
+        description: >
+          JSON array of the glossary terms assigned to the dataset if available.
+
+      - name: dataset_owners
+        description: >
+          JSON array of the users assigned to the dataset as owners.    
