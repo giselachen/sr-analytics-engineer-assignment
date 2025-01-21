@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: users
+    description: > 
+      Users table containing information about DataHub users. Each row represents a unique user in the system
+      and has N:N relationships with DataHub external entities including datasets and dashboards. Users can be 
+      assigned as Owners of external entities.
+    docs:
+      node_color: yellow
+
+    columns:
+      # primary key
+      - name: user_id
+        description: >
+          Unique identifier for the DataHub User represented as urn in the entity model. 
+        tests:
+          - unique
+          - not_null
+
+      # timestamps
+      - name: user_created_at
+        description: >
+          Timestamp indicating when the user was created in Datahub.
+
+      # flags 
+      - name: is_active
+        description: >
+          Flag indicating whether the user is active in the system. 
+
+      # user details
+      - name: user_name
+        description: >
+          Unique username for the user. It's generally the email address of the user. 
+        tests:
+          - not_null
+
+      - name: department_name
+        description: >
+          Name of the department the user belongs to.
+
+      - name: last_name
+        description: >
+          Last name of the user.    
+
+      - name: first_name
+        description: >
+          First name of the user.
+
+      - name: display_name
+        description: >
+          Display name of the user. Same as the full name of the user.
+
+      - name: full_name
+        description: >
+          Full name of the user.
+
+      - name: title
+        description: >
+          Title of the user in the organization.        
+
+      - name: email
+        description: >
+          Email address of the user.
+
+      - name: user_created_by
+        description: >
+          Identifier of the User or process that created the user.      
