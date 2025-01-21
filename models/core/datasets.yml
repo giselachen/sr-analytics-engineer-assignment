@@ -7,7 +7,7 @@ models:
       Datasets have N:N relationships with users and glossary terms entities, amd N:1 relationship with the Domain Entity. 
       A Dataset can be assigned to multiple users as owners. A dataset is an external entity.
     docs:
-      node_color: yellow
+      node_color: orange
 
     columns:
       # primary key

@@ -7,7 +7,7 @@ models:
       and has N:N relationships with DataHub external entities including datasets and dashboards. Users can be 
       assigned as Owners of external entities.
     docs:
-      node_color: yellow
+      node_color: orange
 
     columns:
       # primary key
